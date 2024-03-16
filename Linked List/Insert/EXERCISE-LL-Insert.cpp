@@ -170,6 +170,7 @@ public:
 
     bool set(int index, int value)
     {
+
         Node *temp = get(index);
         if (temp)
         {
@@ -179,12 +180,24 @@ public:
         return false;
     }
 
-    void insert(int index, int value)
+    bool insert(int index, int value)
     {
-        Node *temp = head;
+        if (index < 0 || index > length)
+        {
+            return false;
+        }
         if (index == 0)
         {
-                }
+            prepend(value);
+        }
+        if (index == length)
+        {
+            append(value);
+        }
+        else
+        {
+            set(index, value);
+        }
     }
 };
 
